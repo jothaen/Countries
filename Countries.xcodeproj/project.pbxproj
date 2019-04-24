@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA02F0BE2270BE8D007E1E3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0BD2270BE8D007E1E3E /* AppDelegate.swift */; };
-		DA02F0C02270BE8D007E1E3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0BF2270BE8D007E1E3E /* ViewController.swift */; };
-		DA02F0C32270BE8D007E1E3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA02F0C12270BE8D007E1E3E /* Main.storyboard */; };
+		DA02F0C02270BE8D007E1E3E /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0BF2270BE8D007E1E3E /* IntroViewController.swift */; };
 		DA02F0C52270BE8E007E1E3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA02F0C42270BE8E007E1E3E /* Assets.xcassets */; };
 		DA02F0C82270BE8E007E1E3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA02F0C62270BE8E007E1E3E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -17,8 +16,7 @@
 /* Begin PBXFileReference section */
 		DA02F0BA2270BE8D007E1E3E /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA02F0BD2270BE8D007E1E3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA02F0BF2270BE8D007E1E3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DA02F0C22270BE8D007E1E3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DA02F0BF2270BE8D007E1E3E /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		DA02F0C42270BE8E007E1E3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA02F0C72270BE8E007E1E3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA02F0C92270BE8E007E1E3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,14 +52,21 @@
 		DA02F0BC2270BE8D007E1E3E /* Countries */ = {
 			isa = PBXGroup;
 			children = (
+				DA02F0CF2270C140007E1E3E /* Intro */,
 				DA02F0BD2270BE8D007E1E3E /* AppDelegate.swift */,
-				DA02F0BF2270BE8D007E1E3E /* ViewController.swift */,
-				DA02F0C12270BE8D007E1E3E /* Main.storyboard */,
 				DA02F0C42270BE8E007E1E3E /* Assets.xcassets */,
 				DA02F0C62270BE8E007E1E3E /* LaunchScreen.storyboard */,
 				DA02F0C92270BE8E007E1E3E /* Info.plist */,
 			);
 			path = Countries;
+			sourceTree = "<group>";
+		};
+		DA02F0CF2270C140007E1E3E /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				DA02F0BF2270BE8D007E1E3E /* IntroViewController.swift */,
+			);
+			path = Intro;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +129,6 @@
 			files = (
 				DA02F0C82270BE8E007E1E3E /* LaunchScreen.storyboard in Resources */,
 				DA02F0C52270BE8E007E1E3E /* Assets.xcassets in Resources */,
-				DA02F0C32270BE8D007E1E3E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA02F0C02270BE8D007E1E3E /* ViewController.swift in Sources */,
+				DA02F0C02270BE8D007E1E3E /* IntroViewController.swift in Sources */,
 				DA02F0BE2270BE8D007E1E3E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,14 +147,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DA02F0C12270BE8D007E1E3E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA02F0C22270BE8D007E1E3E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DA02F0C62270BE8E007E1E3E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,7 +278,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Countries/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -290,6 +287,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jothaen.Countries;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -299,7 +297,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Countries/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -307,6 +306,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jothaen.Countries;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

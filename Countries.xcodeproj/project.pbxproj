@@ -11,6 +11,8 @@
 		DA02F0C02270BE8D007E1E3E /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0BF2270BE8D007E1E3E /* IntroViewController.swift */; };
 		DA02F0C52270BE8E007E1E3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA02F0C42270BE8E007E1E3E /* Assets.xcassets */; };
 		DA02F0C82270BE8E007E1E3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA02F0C62270BE8E007E1E3E /* LaunchScreen.storyboard */; };
+		DA02F0D32270C99C007E1E3E /* IntroPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0D22270C99C007E1E3E /* IntroPageModel.swift */; };
+		DA02F0D52270CD54007E1E3E /* IntroPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0D42270CD54007E1E3E /* IntroPageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		DA02F0C42270BE8E007E1E3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA02F0C72270BE8E007E1E3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA02F0C92270BE8E007E1E3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA02F0D22270C99C007E1E3E /* IntroPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageModel.swift; sourceTree = "<group>"; };
+		DA02F0D42270CD54007E1E3E /* IntroPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				DA02F0BF2270BE8D007E1E3E /* IntroViewController.swift */,
+				DA02F0D22270C99C007E1E3E /* IntroPageModel.swift */,
+				DA02F0D42270CD54007E1E3E /* IntroPageCell.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -141,6 +147,8 @@
 			files = (
 				DA02F0C02270BE8D007E1E3E /* IntroViewController.swift in Sources */,
 				DA02F0BE2270BE8D007E1E3E /* AppDelegate.swift in Sources */,
+				DA02F0D32270C99C007E1E3E /* IntroPageModel.swift in Sources */,
+				DA02F0D52270CD54007E1E3E /* IntroPageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

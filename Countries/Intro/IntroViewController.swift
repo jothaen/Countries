@@ -89,9 +89,14 @@ class IntroViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     private func initCollectionView() {
-        collectionView?.backgroundColor = .white
-        collectionView?.isPagingEnabled = true
-        collectionView?.register(IntroPageCell.self, forCellWithReuseIdentifier: "cell")
+        guard let collectionView = collectionView else {
+            assertionFailure("This should never happen ; )")
+            return
+        }
+        
+        collectionView.backgroundColor = .white
+        collectionView.isPagingEnabled = true
+        collectionView.register(IntroPageCell.self, forCellWithReuseIdentifier: "cell")
     }
     
     private func initBottomButtons() {

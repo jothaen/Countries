@@ -12,9 +12,9 @@ class IntroPageCell: UICollectionViewCell {
     
     var model: IntroPageModel? {
         didSet {
-            guard let unwrappedModel = model else { return }
-            headerImageView.image = UIImage(named: unwrappedModel.imageName)
-            descriptionLabel.text = unwrappedModel.descriptionText
+            guard let model = model else { return }
+            headerImageView.image = UIImage(named: model.imageName)
+            descriptionLabel.text = model.descriptionText
         }
     }
     

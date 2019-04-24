@@ -49,13 +49,15 @@ class IntroPageCell: UICollectionViewCell {
             headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            headerImageView.heightAnchor.constraint(equalToConstant: 250)])
+            headerImageView.heightAnchor.constraint(equalToConstant: 250)
+        ])
         
         addSubview(descriptionLabel)
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: 20),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor)])
+            descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
     }
 }

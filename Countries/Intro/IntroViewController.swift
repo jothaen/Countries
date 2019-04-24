@@ -20,6 +20,7 @@ class IntroViewController: UICollectionViewController, UICollectionViewDelegateF
     private var currentPage = 0 {
         didSet {
             pageControl.currentPage = self.currentPage
+            handleNextButtonText(index: self.currentPage)
         }
     }
     
@@ -120,6 +121,17 @@ class IntroViewController: UICollectionViewController, UICollectionViewDelegateF
     private func scrollToIndex(index: Int) {
         let indexPath = IndexPath(item: index, section: 0)
         collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    private func handleNextButtonText(index: Int) {
+        var buttonText: String
+        if (index == pages.count - 1) {
+            buttonText = "CLOSE"
+        } else {
+            buttonText = "NEXT"
+        }
+        
+        nextButton.setTitle(buttonText, for: .normal)
     }
     
 }

@@ -16,8 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let introViewController = IntroViewController()
-        window!.rootViewController = introViewController
+    
+        let viewController: UIViewController
+        
+        if (DefaultsRepository().wasIntroductionDisplayed()) {
+            viewController = MainViewController()
+        } else {
+            viewController = IntroViewController()
+        }
+        
+        window!.rootViewController = viewController
         window!.makeKeyAndVisible()
         return true
     }

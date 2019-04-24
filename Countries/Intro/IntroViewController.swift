@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Foundation
+
 
 class IntroViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    private let KEY_INTRODUCTION_SHOWN = "KEY_INTRODUCTION_SHOWN"
+    
     private let pages = [
         IntroPageModel(imageName: "globe", descriptionText: "First page"),
         IntroPageModel(imageName: "globe", descriptionText: "Second page"),
@@ -114,8 +118,14 @@ class IntroViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     @objc private func onNextClicked() {
-        currentPage = min(currentPage + 1, pages.count - 1)
-        scrollToIndex(index: currentPage)
+        let maxPageIndex = pages.count - 1
+        if (currentPage == maxPageIndex) {
+            setIntroductionShown()
+            presentMainViewController()
+        } else {
+            currentPage = min(currentPage + 1, maxPageIndex)
+            scrollToIndex(index: currentPage)
+        }
     }
     
     @objc private func onPreviousClicked() {
@@ -137,6 +147,15 @@ class IntroViewController: UICollectionViewController, UICollectionViewDelegateF
         }
         
         nextButton.setTitle(buttonText, for: .normal)
+    }
+    
+    private func setIntroductionShown() {
+        DefaultsRepository().setIntroductionDisplayed()
+    }
+    
+    private func presentMainViewController() {
+        let vc = MainViewController()
+        present(vc, animated: true, completion: nil)
     }
     
 }

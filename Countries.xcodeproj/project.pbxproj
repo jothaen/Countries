@@ -13,6 +13,9 @@
 		DA02F0C82270BE8E007E1E3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA02F0C62270BE8E007E1E3E /* LaunchScreen.storyboard */; };
 		DA02F0D32270C99C007E1E3E /* IntroPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0D22270C99C007E1E3E /* IntroPageModel.swift */; };
 		DA02F0D52270CD54007E1E3E /* IntroPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0D42270CD54007E1E3E /* IntroPageCell.swift */; };
+		DA02F0D722710C1D007E1E3E /* Contstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0D622710C1D007E1E3E /* Contstants.swift */; };
+		DA02F0D922710C90007E1E3E /* DefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0D822710C90007E1E3E /* DefaultsRepository.swift */; };
+		DA02F0DC227110A5007E1E3E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0DB227110A5007E1E3E /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		DA02F0C92270BE8E007E1E3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA02F0D22270C99C007E1E3E /* IntroPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageModel.swift; sourceTree = "<group>"; };
 		DA02F0D42270CD54007E1E3E /* IntroPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageCell.swift; sourceTree = "<group>"; };
+		DA02F0D622710C1D007E1E3E /* Contstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contstants.swift; sourceTree = "<group>"; };
+		DA02F0D822710C90007E1E3E /* DefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsRepository.swift; sourceTree = "<group>"; };
+		DA02F0DB227110A5007E1E3E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,11 +62,14 @@
 		DA02F0BC2270BE8D007E1E3E /* Countries */ = {
 			isa = PBXGroup;
 			children = (
+				DA02F0DA2271108F007E1E3E /* Main */,
 				DA02F0CF2270C140007E1E3E /* Intro */,
 				DA02F0BD2270BE8D007E1E3E /* AppDelegate.swift */,
 				DA02F0C42270BE8E007E1E3E /* Assets.xcassets */,
 				DA02F0C62270BE8E007E1E3E /* LaunchScreen.storyboard */,
 				DA02F0C92270BE8E007E1E3E /* Info.plist */,
+				DA02F0D622710C1D007E1E3E /* Contstants.swift */,
+				DA02F0D822710C90007E1E3E /* DefaultsRepository.swift */,
 			);
 			path = Countries;
 			sourceTree = "<group>";
@@ -73,6 +82,14 @@
 				DA02F0D42270CD54007E1E3E /* IntroPageCell.swift */,
 			);
 			path = Intro;
+			sourceTree = "<group>";
+		};
+		DA02F0DA2271108F007E1E3E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DA02F0DB227110A5007E1E3E /* MainViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA02F0DC227110A5007E1E3E /* MainViewController.swift in Sources */,
+				DA02F0D722710C1D007E1E3E /* Contstants.swift in Sources */,
 				DA02F0C02270BE8D007E1E3E /* IntroViewController.swift in Sources */,
 				DA02F0BE2270BE8D007E1E3E /* AppDelegate.swift in Sources */,
+				DA02F0D922710C90007E1E3E /* DefaultsRepository.swift in Sources */,
 				DA02F0D32270C99C007E1E3E /* IntroPageModel.swift in Sources */,
 				DA02F0D52270CD54007E1E3E /* IntroPageCell.swift in Sources */,
 			);

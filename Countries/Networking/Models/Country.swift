@@ -11,6 +11,7 @@ struct Country: Codable {
     
     let name: String
     let capital: String
+    let alpha2Code: String
     
     let topLevelDomain: [String]
     let callingCodes: [String]

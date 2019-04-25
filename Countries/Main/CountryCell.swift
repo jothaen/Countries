@@ -18,6 +18,13 @@ class CountryCell: UITableViewCell {
         }
     }
     
+    let flagImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -35,11 +42,21 @@ class CountryCell: UITableViewCell {
     }
     
     private func setupViews() {
+        contentView.addSubview(flagImageView)
         contentView.addSubview(nameLabel)
+        
+        NSLayoutConstraint.activate([
+            flagImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            flagImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            flagImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            flagImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.2)
+        ])
+        
+        
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            nameLabel.leadingAnchor.constraint(equalTo: flagImageView.trailingAnchor, constant: 10),
+            nameLabel.centerYAnchor.constraint(equalTo: flagImageView.centerYAnchor)
         ])
     }
 }

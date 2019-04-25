@@ -11,6 +11,7 @@ import UIKit
 class CountriesListViewController: UITableViewController {
     
     private let requestsHandler = RequestsHandler()
+    private let imageLoader = ImageLoader()
     
     private var countries: [Country] = [] {
         didSet {
@@ -28,7 +29,11 @@ class CountriesListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath) as! CountryCell
-        cell.country = countries[indexPath.row]
+        let country = countries[indexPath.row]
+        
+        cell.country = country
+        imageLoader.loadFlagByCode(code: country.alpha2Code, imageView: cell.flagImageView)
+        
         return cell
     }
     

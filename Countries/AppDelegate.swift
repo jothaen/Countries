@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController: UIViewController
         
         if (DefaultsRepository().wasIntroductionDisplayed()) {
-            viewController = MainViewController()
+            let navigationController = UINavigationController()
+            navigationController.viewControllers = [CountriesListViewController()]
+            viewController = navigationController
         } else {
             viewController = IntroViewController()
         }

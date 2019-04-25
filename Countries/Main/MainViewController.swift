@@ -10,11 +10,16 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    private let requestsHandler = RequestsHandler()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Countries"
         view.backgroundColor = .green
-        
-        // TODO
+        requestsHandler.getAllCountries(successHandler: { countries in
+            print("Fetched \(countries.count) countries!!!!")
+        }) { (error) in
+            print(error)
+        }
     }
 }

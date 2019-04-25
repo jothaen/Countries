@@ -8,10 +8,12 @@
 
 import UIKit
 
-class CountriesListViewController: UITableViewController {
+class CountriesListViewController: UIViewController {
     
     private let requestsHandler = RequestsHandler()
     private let imageLoader = ImageLoader()
+    
+    private let tableView = UITableView()
     
     private var countries: [Country] = [] {
         didSet {
@@ -22,13 +24,48 @@ class CountriesListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Countries"
-        tableView.register(CountryCell.self, forCellReuseIdentifier: "countryCell")
-
+        initTableView()
+        
         fetchCountries()
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    private func initTableView() {
+        tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(CountryCell.self, forCellReuseIdentifier: "countryCell")
+        tableView.rowHeight = 50
+        
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
+    private func fetchCountries() {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.requestsHandler.getAllCountries(successHandler: { countries in
+                DispatchQueue.main.async {
+                    self?.countries = countries
+                }
+            }) { (error) in
+                DispatchQueue.main.async {
+                    print(error)
+                }
+            }
+        }
+    }
+}
+
+
+// MARK: - UITableViewDataSource
+
+extension CountriesListViewController: UITableViewDataSource {
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath) as! CountryCell
         let country = countries[indexPath.row]
         
@@ -38,29 +75,12 @@ class CountriesListViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countries.count
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
-    
-    private func fetchCountries() {
-        DispatchQueue.global(qos: .background).async {
-            self.requestsHandler.getAllCountries(successHandler: { countries in
-                DispatchQueue.main.async {
-                    self.countries = countries
-                }
-            }) { (error) in
-                DispatchQueue.main.async {
-                    print(error)
-                }
-            }
-        }
-    }
+
 }

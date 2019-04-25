@@ -154,8 +154,9 @@ class IntroViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     private func presentMainViewController() {
-        let vc = CountriesListViewController()
-        present(vc, animated: true, completion: nil)
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [CountriesListViewController()]
+        present(navigationController, animated: true, completion: nil)
     }
     
 }

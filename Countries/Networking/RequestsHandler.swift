@@ -18,7 +18,7 @@ class RequestsHandler {
     static let genericError = "Something went wrong. Please try again later"
     
     func getAllCountries(successHandler: @escaping ([Country]) -> Void, errorHandler: @escaping ErrorHandler) {
-        let url = URL(string: BASE_URL + ALL_COUNTRIES_ENDPOINT)!
+        guard let url = URL(string: BASE_URL + ALL_COUNTRIES_ENDPOINT) else { return }
         let urlRequest = URLRequest(url: url)
         
         get(urlRequest: urlRequest, successHandler: successHandler, errorHandler: errorHandler)
@@ -27,14 +27,14 @@ class RequestsHandler {
     
     private func get<T: Codable>(urlRequest: URLRequest,successHandler: @escaping (T) -> Void, errorHandler: @escaping ErrorHandler) {
         
-        let completionHandler: NetworkCompletionHandler = { (data, urlResponse, error) in
+        let completionHandler: NetworkCompletionHandler = { [weak self] (data, urlResponse, error)  in
             if let error = error {
                 print(error.localizedDescription)
                 errorHandler(RequestsHandler.genericError)
                 return
             }
             
-            if self.isSuccessCode(urlResponse) {
+            if self?.isSuccessCode(urlResponse) ?? false {
                 guard let data = data else {
                     print("Unable to parse the response in given type \(T.self)")
                     return errorHandler(RequestsHandler.genericError)

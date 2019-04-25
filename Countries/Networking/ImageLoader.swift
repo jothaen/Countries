@@ -15,11 +15,12 @@ class ImageLoader {
     
     func loadFlagByCode(code: String, imageView: UIImageView) {
         let url = COUNTRIES_FLAGS_API_URL + code + "/flat/64.png"
-        load(fromUrl: url, toImageView: imageView)
+        load(from: url, to: imageView)
     }
     
-    func load(fromUrl: String, toImageView: UIImageView) {
-        let urlRequest = URLRequest(url: URL(string: fromUrl)!)
+    func load(from url: String, to imageView: UIImageView) {
+        guard let resourceUrl = URL(string: url) else { return }
+        let urlRequest = URLRequest(url: resourceUrl)
         
         let completionHandler: NetworkCompletionHandler = { (data, urlResponse, error) in
             if let error = error {
@@ -29,7 +30,7 @@ class ImageLoader {
             
             guard let data = data else { return }
             DispatchQueue.main.async {
-                toImageView.image = UIImage(data: data)
+                imageView.image = UIImage(data: data)
             }
         }
         

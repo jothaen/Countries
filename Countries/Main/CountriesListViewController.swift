@@ -16,6 +16,7 @@ class CountriesListViewController: UITableViewController {
     private var countries: [Country] = [] {
         didSet {
             tableView.reloadData()
+            title = "All countries (\(countries.count))"
         }
     }
     

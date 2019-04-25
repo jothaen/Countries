@@ -16,10 +16,22 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         title = "Countries"
         view.backgroundColor = .green
-        requestsHandler.getAllCountries(successHandler: { countries in
-            print("Fetched \(countries.count) countries!!!!")
-        }) { (error) in
-            print(error)
+        
+        DispatchQueue.global(qos: .background).async {
+            self.requestsHandler.getAllCountries(successHandler: { countries in
+                DispatchQueue.main.async {
+                    print("Success!. \(countries.count) countries fetched")
+                }
+            }) { (error) in
+                DispatchQueue.main.async {
+                    print(error)
+                }
+            }
+            
+            
         }
+        
+        
+        
     }
 }

@@ -29,6 +29,7 @@ class CountryCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.numberOfLines = 1
         return label
     }()
     
@@ -56,7 +57,8 @@ class CountryCell: UITableViewCell {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: flagImageView.trailingAnchor, constant: 10),
-            nameLabel.centerYAnchor.constraint(equalTo: flagImageView.centerYAnchor)
+            nameLabel.centerYAnchor.constraint(equalTo: flagImageView.centerYAnchor),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30)
         ])
     }
 }

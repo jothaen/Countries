@@ -14,6 +14,7 @@ typealias ErrorHandler = (String) -> Void
 class RequestsHandler {
     private let BASE_URL = "https://restcountries.eu/rest/v2"
     private let ALL_COUNTRIES_ENDPOINT = "/all"
+    private let COUNTRIES_BY_REGION_ENDPOINT = "/region/"
     
     static let genericError = "Something went wrong. Please try again later"
     
@@ -24,6 +25,12 @@ class RequestsHandler {
         get(urlRequest: urlRequest, successHandler: successHandler, errorHandler: errorHandler)
     }
     
+    func getCountriesByRegion(region: Region, successHandler: @escaping ([Country]) -> Void, errorHandler: @escaping ErrorHandler) {
+        guard let url = URL(string: BASE_URL + COUNTRIES_BY_REGION_ENDPOINT + region.rawValue) else { return }
+        let urlRequest = URLRequest(url: url)
+        
+        get(urlRequest: urlRequest, successHandler: successHandler, errorHandler: errorHandler)
+    }
     
     private func get<T: Codable>(urlRequest: URLRequest,successHandler: @escaping (T) -> Void, errorHandler: @escaping ErrorHandler) {
         

@@ -13,41 +13,98 @@ class CountriesListViewController: UIViewController {
     private let requestsHandler = RequestsHandler()
     private let imageLoader = ImageLoader()
     
-    private let tableView = UITableView()
+    private let segmentedControlItems = ["All"] + Region.allCases.map({ (region) -> String in
+        region.rawValue
+    })
+
+    private let tableView: UITableView = {
+        let view = UITableView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.register(CountryCell.self, forCellReuseIdentifier: "countryCell")
+        view.rowHeight = 50
+        return view
+    }()
+    
+    private lazy var segmentedControl: UISegmentedControl = {
+        let view = UISegmentedControl(items: segmentedControlItems)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.selectedSegmentIndex = 0
+        return view
+    }()
     
     private var countries: [Country] = [] {
         didSet {
             tableView.reloadData()
-            title = "All countries (\(countries.count))"
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            
+            title = "Countries count: \(countries.count)"
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        view.backgroundColor = .white
+        
+        initSegmentedControl()
         initTableView()
         
-        fetchCountries()
+        fetchAllCountries()
+    }
+    
+    @objc func segmentedControlIndexChanged() {
+        let selectedIndex = segmentedControl.selectedSegmentIndex
+        
+        switch selectedIndex {
+        case 0:
+            fetchAllCountries()
+        default:
+            guard let region = Region(rawValue: segmentedControlItems[selectedIndex]) else { return }
+            fetchCountriesByRegion(region: region)
+        }
     }
     
     private func initTableView() {
-        tableView.dataSource = self
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(CountryCell.self, forCellReuseIdentifier: "countryCell")
-        tableView.rowHeight = 50
-        
         view.addSubview(tableView)
+        tableView.dataSource = self
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
     
-    private func fetchCountries() {
+    private func initSegmentedControl() {
+        view.addSubview(segmentedControl)
+        
+        segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
+        
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
+    private func fetchAllCountries() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             self?.requestsHandler.getAllCountries(successHandler: { countries in
+                DispatchQueue.main.async {
+                    self?.countries = countries
+                }
+            }) { (error) in
+                DispatchQueue.main.async {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    private func fetchCountriesByRegion(region: Region) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.requestsHandler.getCountriesByRegion(region: region, successHandler: { countries in
                 DispatchQueue.main.async {
                     self?.countries = countries
                 }
@@ -70,6 +127,7 @@ extension CountriesListViewController: UITableViewDataSource {
         let country = countries[indexPath.row]
         
         cell.country = country
+        cell.accessoryType = .disclosureIndicator
         imageLoader.loadFlagByCode(code: country.alpha2Code, imageView: cell.flagImageView)
         
         return cell
@@ -82,5 +140,5 @@ extension CountriesListViewController: UITableViewDataSource {
      func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
 }
+

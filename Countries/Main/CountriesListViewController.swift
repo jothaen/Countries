@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class CountriesListViewController: UIViewController {
     
@@ -32,12 +33,22 @@ class CountriesListViewController: UIViewController {
         return view
     }()
     
+    private lazy var loaderView: AnimationView = {
+        let lotView = AnimationView(name: "loader")
+        lotView.translatesAutoresizingMaskIntoConstraints = false
+        lotView.loopMode = .loop
+        lotView.play()
+        lotView.isHidden = true
+        return lotView
+    }()
+    
     private var countries: [Country] = [] {
         didSet {
             tableView.reloadData()
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             
             title = "Countries count: \(countries.count)"
+            loaderView.isHidden = true
         }
     }
     
@@ -48,6 +59,7 @@ class CountriesListViewController: UIViewController {
         
         initSegmentedControl()
         initTableView()
+        initLoaderView()
         
         fetchAllCountries()
     }
@@ -76,6 +88,17 @@ class CountriesListViewController: UIViewController {
         ])
     }
     
+    private func initLoaderView() {
+        view.addSubview(loaderView)
+        
+        NSLayoutConstraint.activate([
+            loaderView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loaderView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loaderView.heightAnchor.constraint(equalToConstant: 50),
+            loaderView.widthAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
     private func initSegmentedControl() {
         view.addSubview(segmentedControl)
         
@@ -89,7 +112,8 @@ class CountriesListViewController: UIViewController {
     }
     
     private func fetchAllCountries() {
-        DispatchQueue.global(qos: .background).async { [weak self] in
+        loaderView.isHidden = false
+        DispatchQueue.global(qos: .background).async{ [weak self] in
             self?.requestsHandler.getAllCountries(successHandler: { countries in
                 DispatchQueue.main.async {
                     self?.countries = countries
@@ -103,7 +127,8 @@ class CountriesListViewController: UIViewController {
     }
     
     private func fetchCountriesByRegion(region: Region) {
-        DispatchQueue.global(qos: .background).async { [weak self] in
+        loaderView.isHidden = false
+        DispatchQueue.global(qos: .background).async{ [weak self] in
             self?.requestsHandler.getCountriesByRegion(region: region, successHandler: { countries in
                 DispatchQueue.main.async {
                     self?.countries = countries

@@ -148,13 +148,15 @@ class CountriesListViewController: UIViewController {
 extension CountriesListViewController: UITableViewDataSource {
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath) as! CountryCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath)
         let country = countries[indexPath.row]
         
-        cell.country = country
-        cell.accessoryType = .disclosureIndicator
-        imageLoader.loadFlagByCode(code: country.alpha2Code, imageView: cell.flagImageView)
-        
+        if let cell = cell as? CountryCell {
+            cell.country = country
+            cell.accessoryType = .disclosureIndicator
+            imageLoader.loadFlagByCode(code: country.alpha2Code, imageView: cell.flagImageView)
+        }
+    
         return cell
     }
     

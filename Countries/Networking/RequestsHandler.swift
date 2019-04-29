@@ -19,14 +19,22 @@ class RequestsHandler {
     static let genericError = "Something went wrong. Please try again later"
     
     func getAllCountries(successHandler: @escaping ([Country]) -> Void, errorHandler: @escaping ErrorHandler) {
-        guard let url = URL(string: BASE_URL + ALL_COUNTRIES_ENDPOINT) else { return }
+        guard let url = URL(string: BASE_URL + ALL_COUNTRIES_ENDPOINT) else {
+            assertionFailure("Failure while constructing url")
+            return
+        }
+        
         let urlRequest = URLRequest(url: url)
         
         get(urlRequest: urlRequest, successHandler: successHandler, errorHandler: errorHandler)
     }
     
     func getCountriesByRegion(region: Region, successHandler: @escaping ([Country]) -> Void, errorHandler: @escaping ErrorHandler) {
-        guard let url = URL(string: BASE_URL + COUNTRIES_BY_REGION_ENDPOINT + region.rawValue) else { return }
+        guard let url = URL(string: BASE_URL + COUNTRIES_BY_REGION_ENDPOINT + region.rawValue) else {
+            assertionFailure("Failure while constructing url")
+            return
+        }
+        
         let urlRequest = URLRequest(url: url)
         
         get(urlRequest: urlRequest, successHandler: successHandler, errorHandler: errorHandler)
@@ -34,14 +42,14 @@ class RequestsHandler {
     
     private func get<T: Codable>(urlRequest: URLRequest,successHandler: @escaping (T) -> Void, errorHandler: @escaping ErrorHandler) {
         
-        let completionHandler: NetworkCompletionHandler = { [weak self] (data, urlResponse, error)  in
+        let completionHandler: NetworkCompletionHandler = { (data, urlResponse, error)  in
             if let error = error {
                 print(error.localizedDescription)
                 errorHandler(RequestsHandler.genericError)
                 return
             }
             
-            if self?.isSuccessCode(urlResponse) ?? false {
+            if urlResponse.isSuccessful() {
                 guard let data = data else {
                     print("Unable to parse the response in given type \(T.self)")
                     return errorHandler(RequestsHandler.genericError)
@@ -58,15 +66,17 @@ class RequestsHandler {
         
         URLSession.shared.dataTask(with: urlRequest, completionHandler: completionHandler).resume()
     }
-    
-    private func isSuccessCode(_ statusCode: Int) -> Bool {
-        return statusCode >= 200 && statusCode < 300
-    }
-    private func isSuccessCode(_ response: URLResponse?) -> Bool {
-        guard let urlResponse = response as? HTTPURLResponse else {
+}
+
+private extension Optional where Wrapped == URLResponse {
+    func isSuccessful() -> Bool {
+        guard let urlResponse = self as? HTTPURLResponse else {
             return false
         }
         return isSuccessCode(urlResponse.statusCode)
     }
     
+    private func isSuccessCode(_ statusCode: Int) -> Bool {
+        return statusCode >= 200 && statusCode < 300
+    }
 }

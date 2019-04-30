@@ -23,7 +23,7 @@ struct Country: Codable {
     let population: Int
     let area: Float?
     
-    let latlng: [Float]
+    let latlng: [Double]
     
     let flag: String
     

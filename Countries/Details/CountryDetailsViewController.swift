@@ -85,6 +85,10 @@ class CountryDetailsViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
+        
+        
+        let mapButton = UIBarButtonItem(title: "Map", style: .plain, target: self, action: #selector(onMapButtonClicked))
+        navigationItem.rightBarButtonItem = mapButton
     }
     
     private func displayCountryInfo() {
@@ -116,6 +120,11 @@ class CountryDetailsViewController: UIViewController {
         
         return string
         
+    }
+    
+    @objc private func onMapButtonClicked() {
+        let vc = MapViewController(lat: country.latlng[0], lng: country.latlng[1])
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

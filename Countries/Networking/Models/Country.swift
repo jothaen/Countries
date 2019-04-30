@@ -33,30 +33,30 @@ struct Country: Codable {
 
 extension Country {
     
-    func getListedInfo() -> Array<String> {
-        var infoArray = Array<String>()
-        infoArray.append("Country name:  \(name)")
-        infoArray.append("Capital city:  \(capital)")
-        infoArray.append("Region:  \(subregion), \(region)")
-        infoArray.append("Population:  \(population)")
+    func getListedInfo() -> Array<(String, String)> {
+        var infoArray = Array<(String, String)>()
+        infoArray.append(("Country name",  name))
+        infoArray.append(("Capital city", capital))
+        infoArray.append(("Region",  "\(subregion), \(region)"))
+        infoArray.append(("Population", "\(population)"))
         if (area != nil) {
-            infoArray.append("Area:  \(area!) km2")
+            infoArray.append(("Area", "\(area!) sq. km"))
         }
         
         let mappedLanguages = languages.map { (language) -> String in
             language.name
         }
         
-        infoArray.append("Language:  \(mappedLanguages.getPrintableString())")
-        infoArray.append("Time zone:  \(timezones.getPrintableString())")
+        infoArray.append(("Language",  mappedLanguages.getPrintableString()))
+        infoArray.append(("Time zone", timezones.getPrintableString()))
         
         let mappedCurrencies = currencies.map { (currency) -> String in
             currency.getDisplayableValue()
         }
         
-        infoArray.append("Currency:  \(mappedCurrencies.getPrintableString())")
-        infoArray.append("Web domain:  \(topLevelDomain.getPrintableString())")
-        infoArray.append("Phone prefix:  +\(callingCodes.getPrintableString())")
+        infoArray.append(("Currency",  mappedCurrencies.getPrintableString()))
+        infoArray.append(("Web domain",  topLevelDomain.getPrintableString()))
+        infoArray.append(("Phone prefix",  "+\(callingCodes.getPrintableString())"))
         return infoArray
     }
     

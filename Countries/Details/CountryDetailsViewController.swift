@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class CountryDetailsViewController: UIViewController {
     
@@ -34,7 +35,8 @@ class CountryDetailsViewController: UIViewController {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
-        view.heightAnchor.constraint(equalToConstant: 128).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 256).isActive = true
+        view.backgroundColor = .lightGray
         return view
     }()
     
@@ -62,35 +64,58 @@ class CountryDetailsViewController: UIViewController {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
+        scrollView.addSubview(flagImageView)
+        
+        NSLayoutConstraint.activate([
+            flagImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            flagImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            flagImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         
         scrollView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
-        
-        
     }
     
     private func displayCountryInfo() {
-        stackView.addArrangedSubview(flagImageView)
         imageLoader.loadFlagByCode(code: country.alpha2Code, imageView: flagImageView)
         
-        for info in country.getListedInfo() {
+        for (key, value) in country.getListedInfo() {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = info
-            label.font = UIFont.systemFont(ofSize: 18)
+            label.attributedText = getFormattedString(label: key, value: value)
             label.numberOfLines = 10
             stackView.addArrangedSubview(label)
         }
+    }
+    
+    private func getFormattedString(label: String, value: String) -> NSAttributedString {
+        let string = NSMutableAttributedString()
+        
+        string.append(NSAttributedString(
+            string: "\(label): ",
+            attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18)]
+            )
+        )
+        
+        string.append(NSAttributedString(
+            string: value,
+            attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)]
+            )
+        )
+        
+        return string
+        
     }
     
 }

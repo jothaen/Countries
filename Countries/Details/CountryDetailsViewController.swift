@@ -26,7 +26,7 @@ class CountryDetailsViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.alignment = .fill
-        view.spacing = 0
+        view.spacing = 10
         view.distribution = .fill
         return view
     }()

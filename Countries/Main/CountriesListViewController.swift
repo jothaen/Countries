@@ -23,6 +23,7 @@ class CountriesListViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(CountryCell.self, forCellReuseIdentifier: "countryCell")
         view.rowHeight = 50
+        view.allowsSelection = true
         return view
     }()
     
@@ -79,6 +80,7 @@ class CountriesListViewController: UIViewController {
     private func initTableView() {
         view.addSubview(tableView)
         tableView.dataSource = self
+        tableView.delegate = self
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
@@ -168,4 +170,17 @@ extension CountriesListViewController: UITableViewDataSource {
         return 1
     }
 }
+
+// MARK: - UITableViewDelegate
+
+extension CountriesListViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCountry = countries[indexPath.row]
+        let vc = CountryDetailsViewController(country: selectedCountry)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
 

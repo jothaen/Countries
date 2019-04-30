@@ -29,5 +29,51 @@ struct Country: Codable {
     
     let languages: [Language]
     let currencies: [Currency]
+}
 
+extension Country {
+    
+    func getListedInfo() -> Array<String> {
+        var infoArray = Array<String>()
+        infoArray.append("Country name:  \(name)")
+        infoArray.append("Capital city:  \(capital)")
+        infoArray.append("Region:  \(subregion), \(region)")
+        infoArray.append("Population:  \(population)")
+        if (area != nil) {
+            infoArray.append("Area:  \(area!) km2")
+        }
+        
+        let mappedLanguages = languages.map { (language) -> String in
+            language.name
+        }
+        
+        infoArray.append("Language:  \(mappedLanguages.getPrintableString())")
+        infoArray.append("Time zone:  \(timezones.getPrintableString())")
+        
+        let mappedCurrencies = currencies.map { (currency) -> String in
+            currency.getDisplayableValue()
+        }
+        
+        infoArray.append("Currency:  \(mappedCurrencies.getPrintableString())")
+        infoArray.append("Web domain:  \(topLevelDomain.getPrintableString())")
+        infoArray.append("Phone prefix:  +\(callingCodes.getPrintableString())")
+        return infoArray
+    }
+    
+}
+
+extension Array where Element == String {
+    
+    func getPrintableString() -> String {
+        var result = ""
+        
+        for i in 0...self.count - 1 {
+            result.append(self[i])
+            if (i != self.count - 1) {
+                result.append(", ")
+            }
+        }
+        
+        return result
+    }
 }

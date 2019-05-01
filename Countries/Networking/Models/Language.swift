@@ -6,6 +6,10 @@
 //  Copyright © 2019 Piotr Kozłowski. All rights reserved.
 //
 
-struct Language: Codable {
+struct Language: Codable, CustomStringConvertible {
     let name: String
+    
+    var description: String {
+        return name
+    }
 }

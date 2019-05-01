@@ -43,32 +43,24 @@ extension Country {
             infoArray.append(("Area", "\(area!) sq. km"))
         }
         
-        let mappedLanguages = languages.map { (language) -> String in
-            language.name
-        }
+        infoArray.append(("Language",  languages.description))
+        infoArray.append(("Time zone", timezones.description))
         
-        infoArray.append(("Language",  mappedLanguages.getPrintableString()))
-        infoArray.append(("Time zone", timezones.getPrintableString()))
-        
-        let mappedCurrencies = currencies.map { (currency) -> String in
-            currency.getDisplayableValue()
-        }
-        
-        infoArray.append(("Currency",  mappedCurrencies.getPrintableString()))
-        infoArray.append(("Web domain",  topLevelDomain.getPrintableString()))
-        infoArray.append(("Phone prefix",  "+\(callingCodes.getPrintableString())"))
+        infoArray.append(("Currency",  currencies.description))
+        infoArray.append(("Web domain",  topLevelDomain.description))
+        infoArray.append(("Phone prefix",  "+\(callingCodes.description)"))
         return infoArray
     }
     
 }
 
-extension Array where Element == String {
+extension Array: CustomStringConvertible where Element: CustomStringConvertible {
     
-    func getPrintableString() -> String {
+    var description: String {
         var result = ""
         
         for i in 0...self.count - 1 {
-            result.append(self[i])
+            result.append(self[i].description)
             if (i != self.count - 1) {
                 result.append(", ")
             }

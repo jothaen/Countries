@@ -25,9 +25,7 @@ class CountryDetailsViewController: UIViewController {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
-        view.alignment = .fill
         view.spacing = 10
-        view.distribution = .fill
         return view
     }()
     
@@ -82,7 +80,7 @@ class CountryDetailsViewController: UIViewController {
             stackView.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 20),
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
         

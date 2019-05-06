@@ -50,7 +50,8 @@ class CountriesListViewController: UIViewController {
             tableView.reloadData()
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             
-            title = "Countries count: \(countries.count)"
+            navigationItem.prompt = "Countries count: \(countries.count)"
+            title = "Sorted by \(sortingOptions.sortBy) \(sortingOptions.sortOrder)"
             loaderView.isHidden = true
         }
     }
@@ -63,9 +64,8 @@ class CountriesListViewController: UIViewController {
         initSegmentedControl()
         initTableView()
         initLoaderView()
-        initSortButton()
+        initSortButtons()
         fetchAllCountries()
-        
     }
     
     @objc func segmentedControlIndexChanged() {
@@ -116,47 +116,38 @@ class CountriesListViewController: UIViewController {
         ])
     }
     
-    private func initSortButton() {
+    private func initSortButtons() {
         let sortByButton = UIBarButtonItem(image: UIImage(named: "icon_sort_by"), style: .plain, target: self, action: #selector(onSortByButtonClicked))
         let sortOrderButton = UIBarButtonItem(image: UIImage(named: "icon_sort_order"), style: .plain, target: self, action: #selector(onSortOrderButtonClicked))
         navigationItem.rightBarButtonItems = [sortOrderButton, sortByButton]
     }
     
     @objc func onSortOrderButtonClicked() {
-        let actionSheet = UIAlertController(title: nil, message: "Sorting order", preferredStyle: .actionSheet)
-        let ascendingAction = UIAlertAction(title: "Ascending", style: .default) { (UIAlertAction) in
-            self.sortOrderChanged(newSortOrder: SortOrder.ascending)
-        }
-        let descendingAction = UIAlertAction(title: "Descending", style: .default) { (UIAlertAction) in
-            self.sortOrderChanged(newSortOrder: SortOrder.descending)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        actionSheet.addAction(ascendingAction)
-        actionSheet.addAction(descendingAction)
-        actionSheet.addAction(cancelAction)
-        present(actionSheet, animated: true, completion: nil)
+        showActionSheet(title: "Sorting order", actions: [
+            ("Ascending", { self.sortOrderChanged(newSortOrder: SortOrder.ascending) }),
+            ("Descending", { self.sortOrderChanged(newSortOrder: SortOrder.descending )})
+        ])
     }
     
     @objc func onSortByButtonClicked() {
-        let actionSheet = UIAlertController(title: nil, message: "Sorting by", preferredStyle: .actionSheet)
-        let nameAction = UIAlertAction(title: "Name", style: .default) { (UIAlertAction) in
-            self.sortByChanged(newSortBy: SortBy.name)
+        showActionSheet(title: "Sorting by", actions: [
+            ("Name", { self.sortByChanged(newSortBy: SortBy.name) }),
+            ("Population", { self.sortByChanged(newSortBy: SortBy.population) }),
+            ("Area", { self.sortByChanged(newSortBy: SortBy.area) })
+        ])
+    }
+    
+    private func showActionSheet(title: String, actions: [(String, () -> Void)]) {
+        let actionSheet = UIAlertController(title: nil, message: title, preferredStyle: .actionSheet)
+        
+        actions.forEach { (arg0) in
+            let(title, action) = arg0
+            actionSheet.addAction(UIAlertAction(title: title, style: .default) { (UIAlertAction) in
+                action()
+            })
         }
         
-        let populationAction = UIAlertAction(title: "Population", style: .default) { (UIAlertAction) in
-            self.sortByChanged(newSortBy: SortBy.population)
-        }
-        
-        let areaAction = UIAlertAction(title: "Area", style: .default) { (UIAlertAction) in
-            self.sortByChanged(newSortBy: SortBy.area)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        actionSheet.addAction(nameAction)
-        actionSheet.addAction(areaAction)
-        actionSheet.addAction(populationAction)
-        actionSheet.addAction(cancelAction)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(actionSheet, animated: true, completion: nil)
     }
     
@@ -212,11 +203,10 @@ class CountriesListViewController: UIViewController {
                 }
             
             case SortBy.area:
-                guard let leftArea = left.area, let rightArea = right.area else { return false }
                 if sortingOptions.sortOrder == SortOrder.ascending {
-                    return leftArea < rightArea
+                    return left.area < right.area
                 } else {
-                    return leftArea > rightArea
+                    return left.area > right.area
                 }
             }
         }

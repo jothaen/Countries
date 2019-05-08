@@ -140,8 +140,8 @@ class CountriesListViewController: UIViewController {
     private func showActionSheet(title: String, actions: [(String, () -> Void)]) {
         let actionSheet = UIAlertController(title: nil, message: title, preferredStyle: .actionSheet)
         
-        actions.forEach { (arg0) in
-            let(title, action) = arg0
+        actions.forEach { action in
+            let(title, action) = action
             actionSheet.addAction(UIAlertAction(title: title, style: .default) { (UIAlertAction) in
                 action()
             })
@@ -186,28 +186,20 @@ class CountriesListViewController: UIViewController {
     
     private func getSortedCountries(countriesList: [Country]) -> [Country] {
         return countriesList.sorted() { left, right in
-            
-            switch sortingOptions.sortBy {
-            case SortBy.name:
-                if sortingOptions.sortOrder == SortOrder.ascending {
-                    return left.name < right.name
-                } else {
-                    return left.name > right.name
-                }
-            
-            case SortBy.population:
-                if sortingOptions.sortOrder == SortOrder.ascending {
-                    return left.population < right.population
-                } else {
-                    return left.population > right.population
-                }
-            
-            case SortBy.area:
-                if sortingOptions.sortOrder == SortOrder.ascending {
-                    return left.area < right.area
-                } else {
-                    return left.area > right.area
-                }
+
+            switch (sortingOptions.sortBy, sortingOptions.sortOrder) {
+            case (.name, .ascending):
+                return left.name < right.name
+            case (.name, .descending):
+                return left.name > right.name
+            case (.population, .ascending):
+                return left.population < right.population
+            case (.population, .descending):
+                return left.population > right.population
+            case (.area, .ascending):
+                return left.area < right.area
+            case (.area, .descending):
+                return left.area > right.area
             }
         }
     }

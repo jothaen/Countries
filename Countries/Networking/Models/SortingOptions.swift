@@ -6,9 +6,7 @@
 //  Copyright © 2019 Piotr Kozłowski. All rights reserved.
 //
 
-import Foundation
-
-class SortingOptions {
+struct SortingOptions {
     var sortBy: SortBy = SortBy.name
     var sortOrder: SortOrder = SortOrder.ascending
 }

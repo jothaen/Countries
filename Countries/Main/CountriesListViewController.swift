@@ -140,8 +140,8 @@ class CountriesListViewController: UIViewController {
     private func showActionSheet(title: String, actions: [(String, () -> Void)]) {
         let actionSheet = UIAlertController(title: nil, message: title, preferredStyle: .actionSheet)
         
-        actions.forEach { action in
-            let(title, action) = action
+        actions.forEach {
+            let(title, action) = $0
             actionSheet.addAction(UIAlertAction(title: title, style: .default) { (UIAlertAction) in
                 action()
             })

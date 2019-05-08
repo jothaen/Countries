@@ -47,7 +47,7 @@ class CountriesListViewController: UIViewController {
     
     private var countries: [Country] = [] {
         didSet {
-            tableView.reloadData()
+            tableView.reloadDataWithAnimation()
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             
             navigationItem.prompt = "Countries count: \(countries.count)"
@@ -250,6 +250,16 @@ extension CountriesListViewController: UITableViewDelegate {
         let selectedCountry = countries[indexPath.row]
         let vc = CountryDetailsViewController(country: selectedCountry)
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+extension UITableView {
+    
+    func reloadDataWithAnimation() {
+        let range = NSMakeRange(0, numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        reloadSections(sections as IndexSet, with: .automatic)
     }
 }
 

@@ -21,14 +21,30 @@ struct Country: Codable {
     let subregion: String
     
     let population: Int
-    let area: Float?
+    let area: Float
     
     let latlng: [Double]
     
-    let flag: String
-    
     let languages: [Language]
     let currencies: [Currency]
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        numericCode = try values.decodeIfPresent(String.self, forKey: .numericCode)
+        name = try values.decode(String.self, forKey: .name)
+        capital = try values.decode(String.self, forKey: .capital)
+        alpha2Code = try values.decode(String.self, forKey: .alpha2Code)
+        topLevelDomain = try values.decode([String].self, forKey: .topLevelDomain)
+        callingCodes = try values.decode([String].self, forKey: .callingCodes)
+        timezones = try values.decode([String].self, forKey: .timezones)
+        region = try values.decode(String.self, forKey: .region)
+        subregion = try values.decode(String.self, forKey: .subregion)
+        population = try values.decode(Int.self, forKey: .population)
+        area = try values.decodeIfPresent(Float.self, forKey: .area) ?? 0
+        latlng = try values.decode([Double].self, forKey: .latlng)
+        languages = try values.decode([Language].self, forKey: .languages)
+        currencies = try values.decode([Currency].self, forKey: .currencies)
+    }
 }
 
 extension Country {
@@ -39,8 +55,8 @@ extension Country {
         infoArray.append(("Capital city", capital))
         infoArray.append(("Region",  "\(subregion), \(region)"))
         infoArray.append(("Population", "\(population)"))
-        if (area != nil) {
-            infoArray.append(("Area", "\(area!) sq. km"))
+        if (area != 0) {
+            infoArray.append(("Area", "\(area) sq. km"))
         }
         
         infoArray.append(("Language",  languages.description))

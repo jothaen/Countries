@@ -14,6 +14,8 @@ class CountriesListViewController: UIViewController {
     private let requestsHandler = RequestsHandler()
     private let imageLoader = ImageLoader()
     
+    var sortingOptions = SortingOptions()
+    
     private let segmentedControlItems = ["All"] + Region.allCases.map({ (region) -> String in
         region.rawValue
     })
@@ -45,10 +47,11 @@ class CountriesListViewController: UIViewController {
     
     private var countries: [Country] = [] {
         didSet {
-            tableView.reloadData()
+            tableView.reloadDataWithAnimation()
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             
-            title = "Countries count: \(countries.count)"
+            navigationItem.prompt = "Countries count: \(countries.count)"
+            title = "Sorted by \(sortingOptions.sortBy) \(sortingOptions.sortOrder)"
             loaderView.isHidden = true
         }
     }
@@ -61,7 +64,7 @@ class CountriesListViewController: UIViewController {
         initSegmentedControl()
         initTableView()
         initLoaderView()
-        
+        initSortButtons()
         fetchAllCountries()
     }
     
@@ -113,12 +116,48 @@ class CountriesListViewController: UIViewController {
         ])
     }
     
+    private func initSortButtons() {
+        let sortByButton = UIBarButtonItem(image: UIImage(named: "icon_sort_by"), style: .plain, target: self, action: #selector(onSortByButtonClicked))
+        let sortOrderButton = UIBarButtonItem(image: UIImage(named: "icon_sort_order"), style: .plain, target: self, action: #selector(onSortOrderButtonClicked))
+        navigationItem.rightBarButtonItems = [sortOrderButton, sortByButton]
+    }
+    
+    @objc func onSortOrderButtonClicked() {
+        showActionSheet(title: "Sorting order", actions: [
+            ("Ascending", { self.sortOrderChanged(newSortOrder: SortOrder.ascending) }),
+            ("Descending", { self.sortOrderChanged(newSortOrder: SortOrder.descending )})
+        ])
+    }
+    
+    @objc func onSortByButtonClicked() {
+        showActionSheet(title: "Sorting by", actions: [
+            ("Name", { self.sortByChanged(newSortBy: SortBy.name) }),
+            ("Population", { self.sortByChanged(newSortBy: SortBy.population) }),
+            ("Area", { self.sortByChanged(newSortBy: SortBy.area) })
+        ])
+    }
+    
+    private func showActionSheet(title: String, actions: [(String, () -> Void)]) {
+        let actionSheet = UIAlertController(title: nil, message: title, preferredStyle: .actionSheet)
+        
+        actions.forEach {
+            let(title, action) = $0
+            actionSheet.addAction(UIAlertAction(title: title, style: .default) { (UIAlertAction) in
+                action()
+            })
+        }
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
     private func fetchAllCountries() {
         loaderView.isHidden = false
         DispatchQueue.global(qos: .background).async{ [weak self] in
             self?.requestsHandler.getAllCountries(successHandler: { countries in
                 DispatchQueue.main.async {
-                    self?.countries = countries
+                    guard let self = self else { return }
+                    self.countries = self.getSortedCountries(countriesList: countries)
                 }
             }) { (error) in
                 DispatchQueue.main.async {
@@ -133,7 +172,9 @@ class CountriesListViewController: UIViewController {
         DispatchQueue.global(qos: .background).async{ [weak self] in
             self?.requestsHandler.getCountriesByRegion(region: region, successHandler: { countries in
                 DispatchQueue.main.async {
-                    self?.countries = countries
+                    guard let self = self else { return }
+                    self.countries = self.getSortedCountries(countriesList: countries)
+                    
                 }
             }) { (error) in
                 DispatchQueue.main.async {
@@ -141,6 +182,36 @@ class CountriesListViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func getSortedCountries(countriesList: [Country]) -> [Country] {
+        return countriesList.sorted() { left, right in
+
+            switch (sortingOptions.sortBy, sortingOptions.sortOrder) {
+            case (.name, .ascending):
+                return left.name < right.name
+            case (.name, .descending):
+                return left.name > right.name
+            case (.population, .ascending):
+                return left.population < right.population
+            case (.population, .descending):
+                return left.population > right.population
+            case (.area, .ascending):
+                return left.area < right.area
+            case (.area, .descending):
+                return left.area > right.area
+            }
+        }
+    }
+    
+    private func sortByChanged(newSortBy: SortBy) {
+        sortingOptions.sortBy = newSortBy
+        countries = getSortedCountries(countriesList: countries)
+    }
+    
+    private func sortOrderChanged(newSortOrder: SortOrder) {
+        sortingOptions.sortOrder = newSortOrder
+        countries = getSortedCountries(countriesList: countries)
     }
 }
 
@@ -179,6 +250,16 @@ extension CountriesListViewController: UITableViewDelegate {
         let selectedCountry = countries[indexPath.row]
         let vc = CountryDetailsViewController(country: selectedCountry)
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+extension UITableView {
+    
+    func reloadDataWithAnimation() {
+        let range = NSMakeRange(0, numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        reloadSections(sections as IndexSet, with: .automatic)
     }
 }
 

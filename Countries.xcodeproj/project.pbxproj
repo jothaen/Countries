@@ -27,6 +27,7 @@
 		DA5AC78C2278A938007FA544 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5AC78B2278A938007FA544 /* MapViewController.swift */; };
 		DA7129922271CF0500AA8EF4 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7129912271CF0500AA8EF4 /* CountryCell.swift */; };
 		DA7129942271F8C400AA8EF4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7129932271F8C400AA8EF4 /* ImageLoader.swift */; };
+		DAECEB0B2280355800311C3E /* SortingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAECEB0A2280355800311C3E /* SortingOptions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		DA5AC78B2278A938007FA544 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DA7129912271CF0500AA8EF4 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		DA7129932271F8C400AA8EF4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		DAECEB0A2280355800311C3E /* SortingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOptions.swift; sourceTree = "<group>"; };
 		DD3A2CE9770FB2D61D626237 /* Pods-Countries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countries.release.xcconfig"; path = "Target Support Files/Pods-Countries/Pods-Countries.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 				DA02F0E32271A82A007E1E3E /* Language.swift */,
 				DA02F0E52271A86C007E1E3E /* Currency.swift */,
 				DA13F1E32273029500DD4ACA /* Region.swift */,
+				DAECEB0A2280355800311C3E /* SortingOptions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			files = (
 				DA02F0DC227110A5007E1E3E /* CountriesListViewController.swift in Sources */,
 				DA02F0E42271A82A007E1E3E /* Language.swift in Sources */,
+				DAECEB0B2280355800311C3E /* SortingOptions.swift in Sources */,
 				DA02F0E22271A783007E1E3E /* Country.swift in Sources */,
 				DA02F0D722710C1D007E1E3E /* Contstants.swift in Sources */,
 				DA02F0DF2271A402007E1E3E /* RequestsHandler.swift in Sources */,

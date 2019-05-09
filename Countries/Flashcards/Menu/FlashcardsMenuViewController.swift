@@ -11,13 +11,17 @@ import Lottie
 
 class FlashcardsMenuViewController: UIViewController {
     
+    private let presenter = FlashcardsMenuPresenterImpl()
+    
     private var allCountries: [Country] = []
     
     private let scopeItems = ["All"] + Region.allCases.map({ (region) -> String in
         region.rawValue
     })
     
-    private let orderItems = ["Alphabetically", "Shuffle"]
+    private let orderItems = Order.allCases.map { (order) -> String in
+        order.rawValue
+    }
     
     private let infoLabel: UILabel = {
         let label = UILabel()
@@ -91,6 +95,9 @@ class FlashcardsMenuViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.title = "Flashcards"
         initViews()
+        
+        presenter.view = self
+        presenter.viewReady()
     }
     
     private func initViews() {
@@ -122,5 +129,20 @@ class FlashcardsMenuViewController: UIViewController {
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
+    }
+}
+
+extension FlashcardsMenuViewController : FlashcardsMenuView {
+    
+    func openLearnView(flashcards: [Flashcard]) {
+        
+    }
+    
+    func showLoader() {
+        loaderView.isHidden = false
+    }
+    
+    func hideLoader() {
+        loaderView.isHidden = true
     }
 }

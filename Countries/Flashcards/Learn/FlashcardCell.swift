@@ -23,6 +23,8 @@ class FlashcardCell : UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.numberOfLines = 3
+        label.textAlignment = .center
         return label
     }()
     
@@ -35,8 +37,10 @@ class FlashcardCell : UICollectionViewCell {
         view.addSubview(textLabel)
 
         NSLayoutConstraint.activate([
-            textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            textLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            textLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            textLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
         ])
         
         return view

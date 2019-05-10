@@ -15,6 +15,13 @@ class FlashcardsLearningViewController: UIViewController {
     private var collectionView: UICollectionView?
     private var flowLayout: UICollectionViewFlowLayout
     
+    private let counterLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     init(flashcards: [Flashcard]) {
         self.flashcards = flashcards
         flowLayout = UICollectionViewFlowLayout()
@@ -32,6 +39,7 @@ class FlashcardsLearningViewController: UIViewController {
         title = "Learn"
         
         initCollectionView()
+        initCounterLabel()
     }
 
     private func initCollectionView() {
@@ -48,10 +56,21 @@ class FlashcardsLearningViewController: UIViewController {
         
         collectionView.backgroundColor = .white
         collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
         
         view.addSubview(collectionView)
     }
-    
+
+    private func initCounterLabel() {
+        view.addSubview(counterLabel)
+        
+        NSLayoutConstraint.activate([
+            counterLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            counterLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        counterLabel.text = "1/\(flashcards.count)"
+    }
 }
 
 extension FlashcardsLearningViewController: UICollectionViewDelegateFlowLayout {
@@ -81,4 +100,13 @@ extension FlashcardsLearningViewController: UICollectionViewDataSource {
         return cell
     }
 
+}
+
+extension FlashcardsLearningViewController: UICollectionViewDelegate {
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let x = targetContentOffset.pointee.x
+        let currentPage = Int(x / view.frame.width) + 1
+        counterLabel.text = "\(currentPage)/\(flashcards.count)"
+    }
 }

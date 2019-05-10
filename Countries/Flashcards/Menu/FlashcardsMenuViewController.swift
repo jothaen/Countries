@@ -13,8 +13,6 @@ class FlashcardsMenuViewController: UIViewController {
     
     private let presenter = FlashcardsMenuPresenterImpl()
     
-    private var allCountries: [Country] = []
-    
     private let scopeItems = ["All"] + Region.allCases.map({ (region) -> String in
         region.rawValue
     })
@@ -32,6 +30,16 @@ class FlashcardsMenuViewController: UIViewController {
         return label
     }()
     
+    private let flashcardsCountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Flashcards count: "
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var scopeSegmentedControl = UISegmentedControl(items: scopeItems)
+    
     private lazy var scopeStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,13 +52,16 @@ class FlashcardsMenuViewController: UIViewController {
         label.text = "Select scope:"
         label.font = UIFont.boldSystemFont(ofSize: 16)
         
-        let segmentedControl = UISegmentedControl(items: scopeItems)
+        let segmentedControl = scopeSegmentedControl
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(scopeSegmentedControlIndexChanged), for: .valueChanged)
         
         stackView.addArrangedSubview(label)
         stackView.addArrangedSubview(segmentedControl)
         return stackView
     }()
+    
+    private lazy var orderSegmentedControl = UISegmentedControl(items: orderItems)
     
     private lazy var orderStackView: UIStackView = {
         let stackView = UIStackView()
@@ -64,8 +75,9 @@ class FlashcardsMenuViewController: UIViewController {
         label.text = "Select order:"
         label.font = UIFont.boldSystemFont(ofSize: 16)
         
-        let segmentedControl = UISegmentedControl(items: orderItems)
+        let segmentedControl = orderSegmentedControl
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(orderSegmentedControlIndexChanged), for: .valueChanged)
         
         stackView.addArrangedSubview(label)
         stackView.addArrangedSubview(segmentedControl)
@@ -78,6 +90,7 @@ class FlashcardsMenuViewController: UIViewController {
         button.setTitle("Let's go!", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
+        button.addTarget(self, action: #selector(onStartButtonClicked), for: .touchUpInside)
         return button
     }()
     
@@ -105,6 +118,7 @@ class FlashcardsMenuViewController: UIViewController {
         view.addSubview(infoLabel)
         view.addSubview(scopeStackView)
         view.addSubview(orderStackView)
+        view.addSubview(flashcardsCountLabel)
         view.addSubview(startButton)
         
         NSLayoutConstraint.activate([            
@@ -125,17 +139,46 @@ class FlashcardsMenuViewController: UIViewController {
             orderStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             orderStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            startButton.topAnchor.constraint(equalTo: orderStackView.bottomAnchor, constant: 40),
+            flashcardsCountLabel.topAnchor.constraint(equalTo: orderStackView.bottomAnchor, constant: 20),
+            flashcardsCountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            flashcardsCountLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            startButton.topAnchor.constraint(equalTo: flashcardsCountLabel.bottomAnchor, constant: 40),
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
+    }
+    
+    @objc func scopeSegmentedControlIndexChanged() {
+        let selectedIndex = scopeSegmentedControl.selectedSegmentIndex
+        
+        switch selectedIndex {
+        case 0:
+            presenter.onAllCountriesSelected()
+        default:
+            guard let region = Region(rawValue: scopeItems[selectedIndex]) else { return }
+            presenter.onScopeChanged(region: region)
+        }
+    }
+    
+    @objc func orderSegmentedControlIndexChanged() {
+        let selectedIndex = orderSegmentedControl.selectedSegmentIndex
+        
+        guard let order = Order(rawValue: orderItems[selectedIndex]) else { return }
+        presenter.onOrderChanged(order: order)
+    }
+    
+    @objc func onStartButtonClicked() {
+        presenter.onStartButtonClicked()
     }
 }
 
 extension FlashcardsMenuViewController : FlashcardsMenuView {
     
     func openLearnView(flashcards: [Flashcard]) {
-        
+        flashcards.forEach { (flashcard) in
+            print(flashcard.firstPage)
+        }
     }
     
     func showLoader() {
@@ -144,5 +187,9 @@ extension FlashcardsMenuViewController : FlashcardsMenuView {
     
     func hideLoader() {
         loaderView.isHidden = true
+    }
+    
+    func showFlashcardsCount(count: Int) {
+        flashcardsCountLabel.text = "Flashcards count: \(count)"
     }
 }

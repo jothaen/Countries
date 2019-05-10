@@ -12,6 +12,7 @@ protocol FlashcardsMenuView {
     func showLoader()
     func hideLoader()
     func openLearnView(flashcards: [Flashcard])
+    func showFlashcardsCount(count: Int)
 }
     
 protocol FlashcardsMenuPresenter {
@@ -21,6 +22,7 @@ protocol FlashcardsMenuPresenter {
     func onStartButtonClicked()
     func onOrderChanged(order: Order)
     func onScopeChanged(region: Region)
+    func onAllCountriesSelected()
 }
     
 

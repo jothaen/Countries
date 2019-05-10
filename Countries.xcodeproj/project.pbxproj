@@ -29,6 +29,8 @@
 		DA2712E322846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E222846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift */; };
 		DA2712E522846DE7004F43A2 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E422846DE7004F43A2 /* Flashcard.swift */; };
 		DA2712E722846E44004F43A2 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E622846E44004F43A2 /* Order.swift */; };
+		DA28713E22859FF8007CF3D6 /* FlashcardsLearningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA28713D22859FF8007CF3D6 /* FlashcardsLearningViewController.swift */; };
+		DA2871402285A45F007CF3D6 /* FlashcardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA28713F2285A45F007CF3D6 /* FlashcardCell.swift */; };
 		DA5AC78922784291007FA544 /* CountryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5AC78822784291007FA544 /* CountryDetailsViewController.swift */; };
 		DA5AC78C2278A938007FA544 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5AC78B2278A938007FA544 /* MapViewController.swift */; };
 		DA7129922271CF0500AA8EF4 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7129912271CF0500AA8EF4 /* CountryCell.swift */; };
@@ -62,6 +64,8 @@
 		DA2712E222846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsMenuPresenterImpl.swift; sourceTree = "<group>"; };
 		DA2712E422846DE7004F43A2 /* Flashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
 		DA2712E622846E44004F43A2 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		DA28713D22859FF8007CF3D6 /* FlashcardsLearningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsLearningViewController.swift; sourceTree = "<group>"; };
+		DA28713F2285A45F007CF3D6 /* FlashcardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardCell.swift; sourceTree = "<group>"; };
 		DA5AC78822784291007FA544 /* CountryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsViewController.swift; sourceTree = "<group>"; };
 		DA5AC78B2278A938007FA544 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DA7129912271CF0500AA8EF4 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 		DA2712DC22845228004F43A2 /* Flashcards */ = {
 			isa = PBXGroup;
 			children = (
+				DA28713C22859FD2007CF3D6 /* Learn */,
 				DA2712DF22846A9C004F43A2 /* Menu */,
 				DA2712E422846DE7004F43A2 /* Flashcard.swift */,
 			);
@@ -197,6 +202,15 @@
 				DA2712E622846E44004F43A2 /* Order.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		DA28713C22859FD2007CF3D6 /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				DA28713D22859FF8007CF3D6 /* FlashcardsLearningViewController.swift */,
+				DA28713F2285A45F007CF3D6 /* FlashcardCell.swift */,
+			);
+			path = Learn;
 			sourceTree = "<group>";
 		};
 		DA5AC7872278427C007FA544 /* Details */ = {
@@ -343,6 +357,7 @@
 				DA02F0D722710C1D007E1E3E /* Contstants.swift in Sources */,
 				DA02F0DF2271A402007E1E3E /* RequestsHandler.swift in Sources */,
 				DA02F0C02270BE8D007E1E3E /* IntroViewController.swift in Sources */,
+				DA2871402285A45F007CF3D6 /* FlashcardCell.swift in Sources */,
 				DA02F0E62271A86C007E1E3E /* Currency.swift in Sources */,
 				DA5AC78922784291007FA544 /* CountryDetailsViewController.swift in Sources */,
 				DA02F0BE2270BE8D007E1E3E /* AppDelegate.swift in Sources */,
@@ -354,6 +369,7 @@
 				DA02F0D32270C99C007E1E3E /* IntroPageModel.swift in Sources */,
 				DA13F1E42273029500DD4ACA /* Region.swift in Sources */,
 				DA2712E522846DE7004F43A2 /* Flashcard.swift in Sources */,
+				DA28713E22859FF8007CF3D6 /* FlashcardsLearningViewController.swift in Sources */,
 				DA02F0D52270CD54007E1E3E /* IntroPageCell.swift in Sources */,
 				DA2712E722846E44004F43A2 /* Order.swift in Sources */,
 				DA7129942271F8C400AA8EF4 /* ImageLoader.swift in Sources */,

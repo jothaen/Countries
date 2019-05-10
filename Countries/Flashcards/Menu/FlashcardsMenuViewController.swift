@@ -176,9 +176,8 @@ class FlashcardsMenuViewController: UIViewController {
 extension FlashcardsMenuViewController : FlashcardsMenuView {
     
     func openLearnView(flashcards: [Flashcard]) {
-        flashcards.forEach { (flashcard) in
-            print(flashcard.firstPage)
-        }
+        let vc = FlashcardsLearningViewController(flashcards: flashcards)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func showLoader() {

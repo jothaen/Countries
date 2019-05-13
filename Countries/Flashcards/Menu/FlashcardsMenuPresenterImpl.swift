@@ -20,7 +20,7 @@ class FlashcardsMenuPresenterImpl : FlashcardsMenuPresenter {
     
     private var order: Order = Order.Alphabetically
     
-    var view: FlashcardsMenuView?
+    weak var view: FlashcardsMenuView?
     
     func viewReady() {
         view?.showLoader()

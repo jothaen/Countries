@@ -12,7 +12,10 @@ class FlashcardsLearningViewController: UIViewController {
     
     var flashcards: [Flashcard] = []
     
-    private var collectionView: UICollectionView?
+    private lazy var collectionView: UICollectionView = {
+        return UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+    }()
+    
     private var flowLayout: UICollectionViewFlowLayout
     
     private let counterLabel: UILabel = {
@@ -43,13 +46,6 @@ class FlashcardsLearningViewController: UIViewController {
     }
 
     private func initCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
-        
-        guard let collectionView = collectionView else {
-            assertionFailure("This should never happen ; )")
-            return
-        }
-        
         collectionView.register(FlashcardCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.dataSource = self
         collectionView.delegate = self

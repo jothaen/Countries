@@ -8,7 +8,8 @@
 
 import Foundation
 
-protocol FlashcardsMenuView {
+
+protocol FlashcardsMenuView: class {
     func showLoader()
     func hideLoader()
     func openLearnView(flashcards: [Flashcard])

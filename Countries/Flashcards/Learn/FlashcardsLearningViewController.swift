@@ -13,7 +13,16 @@ class FlashcardsLearningViewController: UIViewController {
     var flashcards: [Flashcard] = []
     
     private lazy var collectionView: UICollectionView = {
-        return UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+        let collectionView =  UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+        collectionView.register(FlashcardCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        collectionView.backgroundColor = .white
+        collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+        
+        return collectionView
     }()
     
     private var flowLayout: UICollectionViewFlowLayout
@@ -40,21 +49,12 @@ class FlashcardsLearningViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Learn"
-        
-        initCollectionView()
-        initCounterLabel()
+        initViews()
     }
-
-    private func initCollectionView() {
-        collectionView.register(FlashcardCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
-        collectionView.backgroundColor = .white
-        collectionView.isPagingEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false
-        
+    
+    private func initViews() {
         view.addSubview(collectionView)
+        initCounterLabel()
     }
 
     private func initCounterLabel() {

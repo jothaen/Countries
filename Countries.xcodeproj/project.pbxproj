@@ -23,6 +23,14 @@
 		DA02F0E62271A86C007E1E3E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0E52271A86C007E1E3E /* Currency.swift */; };
 		DA13F1E42273029500DD4ACA /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13F1E32273029500DD4ACA /* Region.swift */; };
 		DA13F1E6227335B400DD4ACA /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = DA13F1E5227335B400DD4ACA /* loader.json */; };
+		DA2712DB228451DF004F43A2 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712DA228451DF004F43A2 /* TabBarController.swift */; };
+		DA2712DE22845242004F43A2 /* FlashcardsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712DD22845242004F43A2 /* FlashcardsMenuViewController.swift */; };
+		DA2712E122846AD8004F43A2 /* FlashcardsMenuContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E022846AD8004F43A2 /* FlashcardsMenuContract.swift */; };
+		DA2712E322846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E222846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift */; };
+		DA2712E522846DE7004F43A2 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E422846DE7004F43A2 /* Flashcard.swift */; };
+		DA2712E722846E44004F43A2 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E622846E44004F43A2 /* Order.swift */; };
+		DA28713E22859FF8007CF3D6 /* FlashcardsLearningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA28713D22859FF8007CF3D6 /* FlashcardsLearningViewController.swift */; };
+		DA2871402285A45F007CF3D6 /* FlashcardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA28713F2285A45F007CF3D6 /* FlashcardCell.swift */; };
 		DA5AC78922784291007FA544 /* CountryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5AC78822784291007FA544 /* CountryDetailsViewController.swift */; };
 		DA5AC78C2278A938007FA544 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5AC78B2278A938007FA544 /* MapViewController.swift */; };
 		DA7129922271CF0500AA8EF4 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7129912271CF0500AA8EF4 /* CountryCell.swift */; };
@@ -50,6 +58,14 @@
 		DA02F0E52271A86C007E1E3E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		DA13F1E32273029500DD4ACA /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		DA13F1E5227335B400DD4ACA /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
+		DA2712DA228451DF004F43A2 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		DA2712DD22845242004F43A2 /* FlashcardsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsMenuViewController.swift; sourceTree = "<group>"; };
+		DA2712E022846AD8004F43A2 /* FlashcardsMenuContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsMenuContract.swift; sourceTree = "<group>"; };
+		DA2712E222846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsMenuPresenterImpl.swift; sourceTree = "<group>"; };
+		DA2712E422846DE7004F43A2 /* Flashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
+		DA2712E622846E44004F43A2 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		DA28713D22859FF8007CF3D6 /* FlashcardsLearningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsLearningViewController.swift; sourceTree = "<group>"; };
+		DA28713F2285A45F007CF3D6 /* FlashcardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardCell.swift; sourceTree = "<group>"; };
 		DA5AC78822784291007FA544 /* CountryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsViewController.swift; sourceTree = "<group>"; };
 		DA5AC78B2278A938007FA544 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DA7129912271CF0500AA8EF4 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
@@ -108,6 +124,7 @@
 		DA02F0BC2270BE8D007E1E3E /* Countries */ = {
 			isa = PBXGroup;
 			children = (
+				DA2712DC22845228004F43A2 /* Flashcards */,
 				DA5AC78A2278A922007FA544 /* Map */,
 				DA5AC7872278427C007FA544 /* Details */,
 				DA13F1E5227335B400DD4ACA /* loader.json */,
@@ -120,6 +137,7 @@
 				DA02F0C92270BE8E007E1E3E /* Info.plist */,
 				DA02F0D622710C1D007E1E3E /* Contstants.swift */,
 				DA02F0D822710C90007E1E3E /* DefaultsRepository.swift */,
+				DA2712DA228451DF004F43A2 /* TabBarController.swift */,
 			);
 			path = Countries;
 			sourceTree = "<group>";
@@ -163,6 +181,36 @@
 				DAECEB0A2280355800311C3E /* SortingOptions.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DA2712DC22845228004F43A2 /* Flashcards */ = {
+			isa = PBXGroup;
+			children = (
+				DA28713C22859FD2007CF3D6 /* Learn */,
+				DA2712DF22846A9C004F43A2 /* Menu */,
+				DA2712E422846DE7004F43A2 /* Flashcard.swift */,
+			);
+			path = Flashcards;
+			sourceTree = "<group>";
+		};
+		DA2712DF22846A9C004F43A2 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				DA2712DD22845242004F43A2 /* FlashcardsMenuViewController.swift */,
+				DA2712E022846AD8004F43A2 /* FlashcardsMenuContract.swift */,
+				DA2712E222846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift */,
+				DA2712E622846E44004F43A2 /* Order.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		DA28713C22859FD2007CF3D6 /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				DA28713D22859FF8007CF3D6 /* FlashcardsLearningViewController.swift */,
+				DA28713F2285A45F007CF3D6 /* FlashcardCell.swift */,
+			);
+			path = Learn;
 			sourceTree = "<group>";
 		};
 		DA5AC7872278427C007FA544 /* Details */ = {
@@ -304,18 +352,26 @@
 				DA02F0DC227110A5007E1E3E /* CountriesListViewController.swift in Sources */,
 				DA02F0E42271A82A007E1E3E /* Language.swift in Sources */,
 				DAECEB0B2280355800311C3E /* SortingOptions.swift in Sources */,
+				DA2712DB228451DF004F43A2 /* TabBarController.swift in Sources */,
 				DA02F0E22271A783007E1E3E /* Country.swift in Sources */,
 				DA02F0D722710C1D007E1E3E /* Contstants.swift in Sources */,
 				DA02F0DF2271A402007E1E3E /* RequestsHandler.swift in Sources */,
 				DA02F0C02270BE8D007E1E3E /* IntroViewController.swift in Sources */,
+				DA2871402285A45F007CF3D6 /* FlashcardCell.swift in Sources */,
 				DA02F0E62271A86C007E1E3E /* Currency.swift in Sources */,
 				DA5AC78922784291007FA544 /* CountryDetailsViewController.swift in Sources */,
 				DA02F0BE2270BE8D007E1E3E /* AppDelegate.swift in Sources */,
 				DA7129922271CF0500AA8EF4 /* CountryCell.swift in Sources */,
 				DA02F0D922710C90007E1E3E /* DefaultsRepository.swift in Sources */,
+				DA2712E122846AD8004F43A2 /* FlashcardsMenuContract.swift in Sources */,
+				DA2712E322846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift in Sources */,
+				DA2712DE22845242004F43A2 /* FlashcardsMenuViewController.swift in Sources */,
 				DA02F0D32270C99C007E1E3E /* IntroPageModel.swift in Sources */,
 				DA13F1E42273029500DD4ACA /* Region.swift in Sources */,
+				DA2712E522846DE7004F43A2 /* Flashcard.swift in Sources */,
+				DA28713E22859FF8007CF3D6 /* FlashcardsLearningViewController.swift in Sources */,
 				DA02F0D52270CD54007E1E3E /* IntroPageCell.swift in Sources */,
+				DA2712E722846E44004F43A2 /* Order.swift in Sources */,
 				DA7129942271F8C400AA8EF4 /* ImageLoader.swift in Sources */,
 				DA5AC78C2278A938007FA544 /* MapViewController.swift in Sources */,
 			);

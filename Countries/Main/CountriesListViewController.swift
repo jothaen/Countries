@@ -51,7 +51,7 @@ class CountriesListViewController: UIViewController {
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             
             navigationItem.prompt = "Countries count: \(countries.count)"
-            title = "Sorted by \(sortingOptions.sortBy) \(sortingOptions.sortOrder)"
+            navigationItem.title = "Sorted by \(sortingOptions.sortBy) \(sortingOptions.sortOrder)"
             loaderView.isHidden = true
         }
     }

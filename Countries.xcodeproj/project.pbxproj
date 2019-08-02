@@ -7,19 +7,71 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85272D8C2EB8F1213A7D2BBA /* Pods_Countries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C829FC24FCAB58424BE562 /* Pods_Countries.framework */; };
 		DA02F0BE2270BE8D007E1E3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0BD2270BE8D007E1E3E /* AppDelegate.swift */; };
 		DA02F0C02270BE8D007E1E3E /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0BF2270BE8D007E1E3E /* IntroViewController.swift */; };
 		DA02F0C52270BE8E007E1E3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA02F0C42270BE8E007E1E3E /* Assets.xcassets */; };
 		DA02F0C82270BE8E007E1E3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA02F0C62270BE8E007E1E3E /* LaunchScreen.storyboard */; };
+		DA02F0D32270C99C007E1E3E /* IntroPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0D22270C99C007E1E3E /* IntroPageModel.swift */; };
+		DA02F0D52270CD54007E1E3E /* IntroPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0D42270CD54007E1E3E /* IntroPageCell.swift */; };
+		DA02F0D722710C1D007E1E3E /* Contstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0D622710C1D007E1E3E /* Contstants.swift */; };
+		DA02F0D922710C90007E1E3E /* DefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0D822710C90007E1E3E /* DefaultsRepository.swift */; };
+		DA02F0DC227110A5007E1E3E /* CountriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0DB227110A5007E1E3E /* CountriesListViewController.swift */; };
+		DA02F0DF2271A402007E1E3E /* RequestsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0DE2271A402007E1E3E /* RequestsHandler.swift */; };
+		DA02F0E22271A783007E1E3E /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0E12271A783007E1E3E /* Country.swift */; };
+		DA02F0E42271A82A007E1E3E /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0E32271A82A007E1E3E /* Language.swift */; };
+		DA02F0E62271A86C007E1E3E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02F0E52271A86C007E1E3E /* Currency.swift */; };
+		DA13F1E42273029500DD4ACA /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13F1E32273029500DD4ACA /* Region.swift */; };
+		DA13F1E6227335B400DD4ACA /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = DA13F1E5227335B400DD4ACA /* loader.json */; };
+		DA2712DB228451DF004F43A2 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712DA228451DF004F43A2 /* TabBarController.swift */; };
+		DA2712DE22845242004F43A2 /* FlashcardsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712DD22845242004F43A2 /* FlashcardsMenuViewController.swift */; };
+		DA2712E122846AD8004F43A2 /* FlashcardsMenuContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E022846AD8004F43A2 /* FlashcardsMenuContract.swift */; };
+		DA2712E322846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E222846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift */; };
+		DA2712E522846DE7004F43A2 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E422846DE7004F43A2 /* Flashcard.swift */; };
+		DA2712E722846E44004F43A2 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2712E622846E44004F43A2 /* Order.swift */; };
+		DA28713E22859FF8007CF3D6 /* FlashcardsLearningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA28713D22859FF8007CF3D6 /* FlashcardsLearningViewController.swift */; };
+		DA2871402285A45F007CF3D6 /* FlashcardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA28713F2285A45F007CF3D6 /* FlashcardCell.swift */; };
+		DA5AC78922784291007FA544 /* CountryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5AC78822784291007FA544 /* CountryDetailsViewController.swift */; };
+		DA5AC78C2278A938007FA544 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5AC78B2278A938007FA544 /* MapViewController.swift */; };
+		DA7129922271CF0500AA8EF4 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7129912271CF0500AA8EF4 /* CountryCell.swift */; };
+		DA7129942271F8C400AA8EF4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7129932271F8C400AA8EF4 /* ImageLoader.swift */; };
+		DAECEB0B2280355800311C3E /* SortingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAECEB0A2280355800311C3E /* SortingOptions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C52F60F57787DBA324317B9E /* Pods-Countries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countries.debug.xcconfig"; path = "Target Support Files/Pods-Countries/Pods-Countries.debug.xcconfig"; sourceTree = "<group>"; };
+		C9C829FC24FCAB58424BE562 /* Pods_Countries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Countries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA02F0BA2270BE8D007E1E3E /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA02F0BD2270BE8D007E1E3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA02F0BF2270BE8D007E1E3E /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		DA02F0C42270BE8E007E1E3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA02F0C72270BE8E007E1E3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA02F0C92270BE8E007E1E3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA02F0D22270C99C007E1E3E /* IntroPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageModel.swift; sourceTree = "<group>"; };
+		DA02F0D42270CD54007E1E3E /* IntroPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageCell.swift; sourceTree = "<group>"; };
+		DA02F0D622710C1D007E1E3E /* Contstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contstants.swift; sourceTree = "<group>"; };
+		DA02F0D822710C90007E1E3E /* DefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsRepository.swift; sourceTree = "<group>"; };
+		DA02F0DB227110A5007E1E3E /* CountriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesListViewController.swift; sourceTree = "<group>"; };
+		DA02F0DE2271A402007E1E3E /* RequestsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsHandler.swift; sourceTree = "<group>"; };
+		DA02F0E12271A783007E1E3E /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		DA02F0E32271A82A007E1E3E /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		DA02F0E52271A86C007E1E3E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		DA13F1E32273029500DD4ACA /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		DA13F1E5227335B400DD4ACA /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
+		DA2712DA228451DF004F43A2 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		DA2712DD22845242004F43A2 /* FlashcardsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsMenuViewController.swift; sourceTree = "<group>"; };
+		DA2712E022846AD8004F43A2 /* FlashcardsMenuContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsMenuContract.swift; sourceTree = "<group>"; };
+		DA2712E222846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsMenuPresenterImpl.swift; sourceTree = "<group>"; };
+		DA2712E422846DE7004F43A2 /* Flashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
+		DA2712E622846E44004F43A2 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		DA28713D22859FF8007CF3D6 /* FlashcardsLearningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsLearningViewController.swift; sourceTree = "<group>"; };
+		DA28713F2285A45F007CF3D6 /* FlashcardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardCell.swift; sourceTree = "<group>"; };
+		DA5AC78822784291007FA544 /* CountryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsViewController.swift; sourceTree = "<group>"; };
+		DA5AC78B2278A938007FA544 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		DA7129912271CF0500AA8EF4 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
+		DA7129932271F8C400AA8EF4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		DAECEB0A2280355800311C3E /* SortingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOptions.swift; sourceTree = "<group>"; };
+		DD3A2CE9770FB2D61D626237 /* Pods-Countries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countries.release.xcconfig"; path = "Target Support Files/Pods-Countries/Pods-Countries.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +79,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85272D8C2EB8F1213A7D2BBA /* Pods_Countries.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19375E65EB4A30DA6B09CDF1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C52F60F57787DBA324317B9E /* Pods-Countries.debug.xcconfig */,
+				DD3A2CE9770FB2D61D626237 /* Pods-Countries.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C292FEA0C0F4135D0E5B9344 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9C829FC24FCAB58424BE562 /* Pods_Countries.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DA02F0B12270BE8D007E1E3E = {
 			isa = PBXGroup;
 			children = (
 				DA02F0BC2270BE8D007E1E3E /* Countries */,
 				DA02F0BB2270BE8D007E1E3E /* Products */,
+				19375E65EB4A30DA6B09CDF1 /* Pods */,
+				C292FEA0C0F4135D0E5B9344 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,11 +124,20 @@
 		DA02F0BC2270BE8D007E1E3E /* Countries */ = {
 			isa = PBXGroup;
 			children = (
+				DA2712DC22845228004F43A2 /* Flashcards */,
+				DA5AC78A2278A922007FA544 /* Map */,
+				DA5AC7872278427C007FA544 /* Details */,
+				DA13F1E5227335B400DD4ACA /* loader.json */,
+				DA02F0DD2271A3E4007E1E3E /* Networking */,
+				DA02F0DA2271108F007E1E3E /* Main */,
 				DA02F0CF2270C140007E1E3E /* Intro */,
 				DA02F0BD2270BE8D007E1E3E /* AppDelegate.swift */,
 				DA02F0C42270BE8E007E1E3E /* Assets.xcassets */,
 				DA02F0C62270BE8E007E1E3E /* LaunchScreen.storyboard */,
 				DA02F0C92270BE8E007E1E3E /* Info.plist */,
+				DA02F0D622710C1D007E1E3E /* Contstants.swift */,
+				DA02F0D822710C90007E1E3E /* DefaultsRepository.swift */,
+				DA2712DA228451DF004F43A2 /* TabBarController.swift */,
 			);
 			path = Countries;
 			sourceTree = "<group>";
@@ -65,8 +146,87 @@
 			isa = PBXGroup;
 			children = (
 				DA02F0BF2270BE8D007E1E3E /* IntroViewController.swift */,
+				DA02F0D22270C99C007E1E3E /* IntroPageModel.swift */,
+				DA02F0D42270CD54007E1E3E /* IntroPageCell.swift */,
 			);
 			path = Intro;
+			sourceTree = "<group>";
+		};
+		DA02F0DA2271108F007E1E3E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DA02F0DB227110A5007E1E3E /* CountriesListViewController.swift */,
+				DA7129912271CF0500AA8EF4 /* CountryCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DA02F0DD2271A3E4007E1E3E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				DA02F0E02271A712007E1E3E /* Models */,
+				DA02F0DE2271A402007E1E3E /* RequestsHandler.swift */,
+				DA7129932271F8C400AA8EF4 /* ImageLoader.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		DA02F0E02271A712007E1E3E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA02F0E12271A783007E1E3E /* Country.swift */,
+				DA02F0E32271A82A007E1E3E /* Language.swift */,
+				DA02F0E52271A86C007E1E3E /* Currency.swift */,
+				DA13F1E32273029500DD4ACA /* Region.swift */,
+				DAECEB0A2280355800311C3E /* SortingOptions.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DA2712DC22845228004F43A2 /* Flashcards */ = {
+			isa = PBXGroup;
+			children = (
+				DA28713C22859FD2007CF3D6 /* Learn */,
+				DA2712DF22846A9C004F43A2 /* Menu */,
+				DA2712E422846DE7004F43A2 /* Flashcard.swift */,
+			);
+			path = Flashcards;
+			sourceTree = "<group>";
+		};
+		DA2712DF22846A9C004F43A2 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				DA2712DD22845242004F43A2 /* FlashcardsMenuViewController.swift */,
+				DA2712E022846AD8004F43A2 /* FlashcardsMenuContract.swift */,
+				DA2712E222846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift */,
+				DA2712E622846E44004F43A2 /* Order.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		DA28713C22859FD2007CF3D6 /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				DA28713D22859FF8007CF3D6 /* FlashcardsLearningViewController.swift */,
+				DA28713F2285A45F007CF3D6 /* FlashcardCell.swift */,
+			);
+			path = Learn;
+			sourceTree = "<group>";
+		};
+		DA5AC7872278427C007FA544 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				DA5AC78822784291007FA544 /* CountryDetailsViewController.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		DA5AC78A2278A922007FA544 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DA5AC78B2278A938007FA544 /* MapViewController.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -76,9 +236,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA02F0CC2270BE8E007E1E3E /* Build configuration list for PBXNativeTarget "Countries" */;
 			buildPhases = (
+				D19CB11962474A470CC8DDC3 /* [CP] Check Pods Manifest.lock */,
 				DA02F0B62270BE8D007E1E3E /* Sources */,
 				DA02F0B72270BE8D007E1E3E /* Frameworks */,
 				DA02F0B82270BE8D007E1E3E /* Resources */,
+				38685F0EB6C4540A086BD525 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,19 +290,90 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA02F0C82270BE8E007E1E3E /* LaunchScreen.storyboard in Resources */,
+				DA13F1E6227335B400DD4ACA /* loader.json in Resources */,
 				DA02F0C52270BE8E007E1E3E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38685F0EB6C4540A086BD525 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Countries/Pods-Countries-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Countries/Pods-Countries-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D19CB11962474A470CC8DDC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Countries-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DA02F0B62270BE8D007E1E3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA02F0DC227110A5007E1E3E /* CountriesListViewController.swift in Sources */,
+				DA02F0E42271A82A007E1E3E /* Language.swift in Sources */,
+				DAECEB0B2280355800311C3E /* SortingOptions.swift in Sources */,
+				DA2712DB228451DF004F43A2 /* TabBarController.swift in Sources */,
+				DA02F0E22271A783007E1E3E /* Country.swift in Sources */,
+				DA02F0D722710C1D007E1E3E /* Contstants.swift in Sources */,
+				DA02F0DF2271A402007E1E3E /* RequestsHandler.swift in Sources */,
 				DA02F0C02270BE8D007E1E3E /* IntroViewController.swift in Sources */,
+				DA2871402285A45F007CF3D6 /* FlashcardCell.swift in Sources */,
+				DA02F0E62271A86C007E1E3E /* Currency.swift in Sources */,
+				DA5AC78922784291007FA544 /* CountryDetailsViewController.swift in Sources */,
 				DA02F0BE2270BE8D007E1E3E /* AppDelegate.swift in Sources */,
+				DA7129922271CF0500AA8EF4 /* CountryCell.swift in Sources */,
+				DA02F0D922710C90007E1E3E /* DefaultsRepository.swift in Sources */,
+				DA2712E122846AD8004F43A2 /* FlashcardsMenuContract.swift in Sources */,
+				DA2712E322846C5B004F43A2 /* FlashcardsMenuPresenterImpl.swift in Sources */,
+				DA2712DE22845242004F43A2 /* FlashcardsMenuViewController.swift in Sources */,
+				DA02F0D32270C99C007E1E3E /* IntroPageModel.swift in Sources */,
+				DA13F1E42273029500DD4ACA /* Region.swift in Sources */,
+				DA2712E522846DE7004F43A2 /* Flashcard.swift in Sources */,
+				DA28713E22859FF8007CF3D6 /* FlashcardsLearningViewController.swift in Sources */,
+				DA02F0D52270CD54007E1E3E /* IntroPageCell.swift in Sources */,
+				DA2712E722846E44004F43A2 /* Order.swift in Sources */,
+				DA7129942271F8C400AA8EF4 /* ImageLoader.swift in Sources */,
+				DA5AC78C2278A938007FA544 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +509,7 @@
 		};
 		DA02F0CD2270BE8E007E1E3E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C52F60F57787DBA324317B9E /* Pods-Countries.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -295,6 +529,7 @@
 		};
 		DA02F0CE2270BE8E007E1E3E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD3A2CE9770FB2D61D626237 /* Pods-Countries.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
